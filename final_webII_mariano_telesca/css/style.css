@@ -1,0 +1,110 @@
+/********** CONTENIDO ARREGLOS GENERALES ************/
+.cuerpo {
+  background-color: #f6f6f6;
+}
+
+.franjacolor {
+  background: #fffa6b;
+}
+.franjaColorRojo {
+  background: lightcoral;
+}
+
+.franjaalto1 {
+  height: 3em;
+}
+.franjaalto2 {
+  height: 2em;
+}
+.textofranja {
+  color: black;
+  text-decoration: underline;
+  font-weight: bold;
+  text-align: center;
+  justify-content: center;
+}
+p, h1, h2, h3 {
+  font-family: 'Roboto Condensed', sans-serif;
+}
+.titulo {
+  text-decoration: none;   
+}
+
+/********** QUIENES SOMOS **************
+section {
+  padding: 3px;
+} *************************************/
+
+/********** FORMULARIO ************/
+.form {
+  background-color: lightyellow;
+}
+.form_input, #consulta {
+  background: none;
+  border: none;
+  outline: none;
+  margin-bottom: 10px;
+  margin-right: 5vw;
+  margin-left: 6vh;
+  padding: 5vh 5vw;
+  border-bottom: solid 1px gray;
+  color: gray;
+  font-style: italic; 
+}
+
+#consulta {
+  resize: none; 
+  width: 85%;
+}
+.form_boton {
+  border-radius: 10px;
+  padding: 0.3rem 1rem;
+  margin: .5rem .5rem 1rem 4rem;
+  cursor: pointer; 
+}
+
+/*********** INDEX ***************/
+.card {
+  width: 18rem;
+}
+.cardtamanio {
+  width: 17rem;
+}
+.imgcardtamanio {
+  width: 10rem;
+}
+
+/*********** FOOTER GENERAL ***************/
+footer {
+  background: #0d6efd;
+  text-align: center;
+  margin-top: .5em; 
+}
+footer a, footer ul, footer li {
+  color: black;
+  text-decoration: none;
+  font-size: small;
+  list-style: none;
+  font-size: 0.8em; 
+}
+.envios {
+  margin-top: 1rem;
+  color: black;
+  text-decoration: none;
+  font-size: small;
+  list-style: none;
+  font-size: 0.8em; 
+}
+.footer_info {
+  justify-content: center; 
+}
+.footer_iconos {
+  width: 2rem;
+  height: 2rem;
+  margin: 1rem; 
+}
+
+/****************** LOG IN ***************************/
+table{
+  border: black 1 solid;
+}

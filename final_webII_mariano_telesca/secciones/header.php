@@ -1,8 +1,10 @@
 <?php
-// Acá se define el array con las secciones
-$secciones = ["Inicio" => "index.php", "Tienda" => "tienda.php", "Contacto" => "contacto.php", "Registrarse" => "registro.php", "Log In" => "login.php", "Admin" => "administrador.php"];
-// $secciones = ["Inicio" => "index.php", "Tienda" => "tienda.php", "Contacto" => "contacto.php"];
-// $seccionesUsuario = []
+// Acá se define el array con las secciones, según el tipo de usuario
+$seccionesSinLoguear = ["Inicio" => "index.php", "Tienda" => "tienda.php", "Contacto" => "contacto.php", "Registrarse" => "registro.php", "Log In" => "login.php"];
+$seccionesAdmin = ["Inicio" => "index.php", "Tienda" => "tienda.php", "Admin" => "administrador.php"];
+$seccionesUsuario = ["Inicio" => "index.php", "Tienda" => "tienda.php", "Contacto" => "contacto.php"];
+
+session_start();
 ?>
 
 <!-- *** Acá se carga el header que será contenido en varias secciones *** -->
@@ -14,40 +16,41 @@ $secciones = ["Inicio" => "index.php", "Tienda" => "tienda.php", "Contacto" => "
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <?php
-                    // Por cada sección definida en el array, se imprime un <li> para mostrar el menú
-                    foreach($secciones as $seccion => $archivo){
-                        echo '
-                        <li class="nav-item">
-                            <a class="nav-link" aria-current="page" href="'.$archivo.'">'.$seccion.'</a>
-                        </li>';
-                    };
-                    ?>
-                </ul>
+                        if(isset($_SESSION['sesion']) && $_SESSION['sesion'] == true){
 
-                <!--
-                <form class="d-flex" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Buscar</button>
-                </form>
-                -->
+                            if(isset($_SESSION['tipo_admin']) && $_SESSION['tipo_admin'] == 1){
+                                //En caso haber iniciada sesión y que el tipo_admin sea positivo, por cada sección definida en el array correspondiente, se imprime un <li> para mostrar el menú
+                                foreach($seccionesAdmin as $seccion => $archivo){
+                                    echo '
+                                    <li class="nav-item">
+                                        <a class="nav-link" aria-current="page" href="'.$archivo.'">'.$seccion.'</a>
+                                    </li>';
+                                };
+                            }
 
-                <!--
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <?php
-                    // Por cada sección definida en el array, se imprime un <li> para mostrar el menú
-                    foreach($seccionesUsuario as $seccionUsuario => $archivo){
-                        echo '
-                        <li class="nav-item">
-                            <a class="nav-link" aria-current="page" href="'.$archivo.'">'.$seccionUsuario.'</a>
-                        </li>';
-                    };
+                            if(isset($_SESSION['tipo_admin']) && $_SESSION['tipo_admin'] == 0){
+                                //En caso haber iniciada sesión y que el tipo_admin sea negativo, osea es un usuario común, por cada sección definida en el array correspondiente, se imprime un <li> para mostrar el menú
+                                foreach($seccionesUsuario as $seccion => $archivo){
+                                    echo '
+                                    <li class="nav-item">
+                                        <a class="nav-link" aria-current="page" href="'.$archivo.'">'.$seccion.'</a>
+                                    </li>';
+                                };
+                            }
+
+                        }else{
+                            // En caso de no haber iniciada sesión, por cada sección definida en el array, se imprime un <li> para mostrar el menú
+                            foreach($seccionesSinLoguear as $seccion => $archivo){
+                                echo '
+                                <li class="nav-item">
+                                    <a class="nav-link" aria-current="page" href="'.$archivo.'">'.$seccion.'</a>
+                                </li>';
+                            };
+                        }
                     ?>
-                </ul>
-                -->
-                
+                </ul>                
             </div>
         </div>
     </nav>

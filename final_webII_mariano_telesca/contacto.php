@@ -1,7 +1,16 @@
 <?php
-    // Acá se carga el footer desde un archivo externo
-    include_once('secciones/head.php');
-    titulo_pag("Contacto");
+
+  session_start();
+
+  // Si ya hay un logueo activo de admin, se lo redirige al panel administrador
+  if (isset($_SESSION['sesion']) && $_SESSION['sesion'] == true && $_SESSION['tipo_admin'] == 1) {
+    header("Location: administrador.php");
+    exit();
+  }
+
+  // Acá se carga el head desde un archivo externo
+  include_once('secciones/head.php');
+  titulo_pag("Contacto");
 ?>
 
 <body class="cuerpo">

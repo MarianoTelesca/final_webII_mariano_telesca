@@ -1,5 +1,18 @@
 <?php
-    // Acá se carga el footer desde un archivo externo
+
+    session_start();
+
+    // Si ya hay un logueo activo, se redirige (el admin al panel administrador y el user a la pág principal
+    if (isset($_SESSION['sesion']) && $_SESSION['sesion'] == true) {
+        if ($_SESSION['tipo_admin'] == 1) {
+            header("Location: administrador.php");
+        } else {
+            header("Location: index.php");
+        }
+        exit();
+    }
+
+    // Acá se carga el head desde un archivo externo
     require_once('secciones/head.php');
     titulo_pag("Registrarse");
     require_once('funciones/registrarse.php');

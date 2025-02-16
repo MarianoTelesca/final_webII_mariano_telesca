@@ -61,6 +61,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     // Verificamos la contraseña con el hash
                     if (password_verify($contrasenia_login, $contrasenia_hash)) {
                         session_start();
+                        $_SESSION['sesion'] = true;
                         $_SESSION['id'] = $id;
                         $_SESSION['user'] = $user;
                         $_SESSION['tipo_admin'] = $tipo_admin;
@@ -71,7 +72,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         } else {
                             header("Location: index.php");
                         }
-                        exit();
                     } else {
                         echo 'Contraseña incorrecta';
                     }

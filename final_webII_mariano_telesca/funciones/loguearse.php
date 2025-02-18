@@ -1,7 +1,7 @@
 <?php
 
 //Se declara un array para los errores del form
-$errors_login = [];
+$errores_login = [];
 
 //Se declaran variables para cada input que sirven para mantener un valor ingresado si hay errores en otros inputs
 $usuario_login = "";
@@ -15,15 +15,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     //Acá, por cada uno de los tres inputs, si uno está vacío, agrega ese error al array de errores
     if ($_POST["usuario_login"] == "") {
-        $errors_login[] = "El usuario debe tener información";
+        $errores_login[] = "El usuario debe tener información";
     }
 
     if ($_POST["contrasenia_login"] == "") {
-        $errors_login[] = "La contraseña debe completarse";
+        $errores_login[] = "La contraseña debe completarse";
     }
 
     //Si el array está vacío (o sea, no hay errores en los inputs), se continúa con introducir los datos a la DB
-    if (empty($errors_login)) {
+    if (empty($errores_login)) {
 
         //Cargo la conexión a la Base de Datos desde un archivo externo
         require_once 'basededatos/conexion.php';

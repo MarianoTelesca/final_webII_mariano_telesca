@@ -1,10 +1,17 @@
 <?php
-// Acá se define el array con las secciones, según el tipo de usuario
-$seccionesSinLoguear = ["Inicio" => "index.php", "Tienda" => "tienda.php", "Contacto" => "contacto.php", "Registrarse" => "registro.php", "Log In" => "login.php"];
-$seccionesAdmin = ["Inicio" => "index.php", "Tienda" => "tienda.php", "Admin" => "administrador.php"];
-$seccionesUsuario = ["Inicio" => "index.php", "Tienda" => "tienda.php", "Contacto" => "contacto.php"];
+    if (session_status() == PHP_SESSION_NONE) {
+        session_start();
+    }
 
-session_start();
+    // Acá se define el array con las secciones, según el tipo de usuario
+    $seccionesSinLoguear = ["Inicio" => "index.php", "Tienda" => "tienda.php", "Contacto" => "contacto.php", "Registrarse" => "registro.php", "Log In" => "login.php"];
+    $seccionesAdmin = ["Inicio" => "index.php", "Tienda" => "tienda.php", "Admin" => "administrador.php"];
+    $seccionesUsuario = ["Inicio" => "index.php", "Tienda" => "tienda.php", "Contacto" => "contacto.php"];
+
+    // Incluyo una función creada aparte donde solo pasó que array usará para crear el menú según quien inicio sesión
+    include_once('./funciones/header_secciones.php');
+
+    include_once('./funciones/cerrar_sesion.php');
 ?>
 
 <!-- *** Acá se carga el header que será contenido en varias secciones *** -->
@@ -21,33 +28,19 @@ session_start();
                         if(isset($_SESSION['sesion']) && $_SESSION['sesion'] == true){
 
                             if(isset($_SESSION['tipo_admin']) && $_SESSION['tipo_admin'] == 1){
-                                //En caso haber iniciada sesión y que el tipo_admin sea positivo, por cada sección definida en el array correspondiente, se imprime un <li> para mostrar el menú
-                                foreach($seccionesAdmin as $seccion => $archivo){
-                                    echo '
-                                    <li class="nav-item">
-                                        <a class="nav-link" aria-current="page" href="'.$archivo.'">'.$seccion.'</a>
-                                    </li>';
-                                };
+                                header_secciones($seccionesAdmin);
                             }
 
                             if(isset($_SESSION['tipo_admin']) && $_SESSION['tipo_admin'] == 0){
-                                //En caso haber iniciada sesión y que el tipo_admin sea negativo, osea es un usuario común, por cada sección definida en el array correspondiente, se imprime un <li> para mostrar el menú
-                                foreach($seccionesUsuario as $seccion => $archivo){
-                                    echo '
-                                    <li class="nav-item">
-                                        <a class="nav-link" aria-current="page" href="'.$archivo.'">'.$seccion.'</a>
-                                    </li>';
-                                };
+                                header_secciones($seccionesUsuario);
                             }
 
+                            echo '<li class="nav-item"><form method="POST">
+                                    <button type="submit" name="cerrar_sesion">Cerrar sesión</button>
+                                </form></li>';
+
                         }else{
-                            // En caso de no haber iniciada sesión, por cada sección definida en el array, se imprime un <li> para mostrar el menú
-                            foreach($seccionesSinLoguear as $seccion => $archivo){
-                                echo '
-                                <li class="nav-item">
-                                    <a class="nav-link" aria-current="page" href="'.$archivo.'">'.$seccion.'</a>
-                                </li>';
-                            };
+                            header_secciones($seccionesSinLoguear);
                         }
                     ?>
                 </ul>                

@@ -1,5 +1,5 @@
 <?php
-    // Acá se carga el footer desde un archivo externo
+    session_start();
     include_once('secciones/head.php');
     titulo_pag("Inicio");
 ?>

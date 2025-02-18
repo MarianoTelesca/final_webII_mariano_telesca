@@ -1,5 +1,4 @@
 <?php
-    // Acá se carga el footer desde un archivo externo
     include_once('secciones/head.php');
     titulo_pag("Contacto");
 ?>
@@ -22,7 +21,11 @@
 
             <?php
                 // Inicializacion de variables en cero.
-                $nombre = $apellido = $consulta = $edad = $email = "";
+                $nombre = "";
+                $apellido = "";
+                $consulta = "";
+                $edad = "";
+                $email = "";
 
                 // Traigo el archivo externo que contiene la función para filtrar los datos ingresados desde el formulario 
                 require_once('funciones/saneos/saneodatos.php');
@@ -54,7 +57,7 @@
                                     <p>Edad: '.$edad.'</p>
                                     <p>Su consulta: '.$consulta.'</p>';
 
-                                    include_once('subida_archivo.php');
+                                    include_once('funciones/subida_archivo.php');
 
                     echo '          </div>
                                 </div>

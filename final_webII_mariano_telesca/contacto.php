@@ -1,5 +1,4 @@
 <?php
-
   session_start();
 
   // Si ya hay un logueo activo de admin, se lo redirige al panel administrador

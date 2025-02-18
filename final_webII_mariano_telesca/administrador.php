@@ -1,5 +1,12 @@
 <?php
-    // Acá se carga el footer desde un archivo externo
+
+    session_start();
+    // Si ya hay logueado un usuario común, se lo redirige al index
+    if (isset($_SESSION['sesion']) && $_SESSION['sesion'] == true && $_SESSION['tipo_admin'] == 0) {
+        header("Location: index.php");
+        exit();
+    }
+
     include_once('secciones/head.php');
     titulo_pag("Panel administrador");
 ?>

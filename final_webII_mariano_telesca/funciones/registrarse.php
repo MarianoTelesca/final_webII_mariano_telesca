@@ -1,7 +1,7 @@
 <?php
 
 //Se declara un array para los errores del form
-$errors_register = [];
+$errores_register = [];
 
 //Se declaran variables para cada input que sirven para mantener un valor ingresado si hay errores en otros inputs
 $nombre_nuevo_usuario = "";
@@ -15,21 +15,21 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     $tipo_nuevo_usuario = 0;
     $contrasenia_nuevo_usuario = $_POST["contrasenia_nuevo_usuario"];
 
-    //Acá, por cada uno de los tres inputs, si uno está vacio, agrega ese error al array de errors
+    //Acá, por cada uno de los tres inputs, si uno está vacio, agrega ese error al array de errores
     if($_POST["nombre_nuevo_usuario"] == ""){
-        $errors_register[] = "El título debe tener información";
+        $errores_register[] = "El título debe tener información";
     }
 
     if($_POST["contrasenia_nuevo_usuario"] == ""){
-        $errors_register[] = "La contraseña debe completarse";
+        $errores_register[] = "La contraseña debe completarse";
     }
 
     if ($_POST["contrasenia_nuevo_usuario"] !== $_POST["contrasenia_nuevo_usuario_2"]) {
-        $errors_register[] = "Las contraseñas no coinciden";
+        $errores_register[] = "Las contraseñas no coinciden";
     }
 
     //Si el array está vacio (osea no hay errores en los inputs), se continua con introducir la data a la DB
-    if(empty($errors_register)){
+    if(empty($errores_register)){
 
         //Cargo la conexión a la Base de Datos desde un archivo externo
         require_once 'basededatos/conexion.php';

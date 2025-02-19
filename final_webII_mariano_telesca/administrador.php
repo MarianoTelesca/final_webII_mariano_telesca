@@ -52,7 +52,7 @@
             </h2>
             <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
             <div class="accordion-body">
-                <?php include('secciones/actualizar _usuarios_visual.php'); ?>
+                <?php include('secciones/actualizar_usuarios_visual.php'); ?>
                 </div>
             </div>
         </div>
@@ -71,12 +71,12 @@
         <div class="accordion-item">
             <h2 class="accordion-header" id="headingFive">
             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
-                Cursos: Visualizar
+                Cursos: Actualizar
             </button>
             </h2>
             <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#accordionExample">
             <div class="accordion-body">
-                <?php include('secciones/visualizacion_cursos_visual.php'); ?>
+                <?php include('secciones/actualizar_cursos_visual.php'); ?>
                 </div>
             </div>
         </div>

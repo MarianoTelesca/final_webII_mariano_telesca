@@ -10,6 +10,7 @@
   // Acá se carga el head desde un archivo externo
   include_once('secciones/head.php');
   titulo_pag("Contacto");
+  include_once('funciones/formulario_contacto.php');
 ?>
 
 <body class="cuerpo">
@@ -30,7 +31,7 @@
     <!-- FORMULARIO DE CONTACTO -->
     <div class="row">
       <!-- En el formulario enviamos la información completada por el usuario a traves del método POST para que al apretar el botón submit vaya al archivo form.php -->
-      <form action="form.php" method="POST" class="form borde container" autocomplete="off" enctype="multipart/form-data" onsubmit="validarFormulario(event)">
+      <form method="POST" class="form borde container" autocomplete="off" enctype="multipart/form-data" onsubmit="validarFormulario(event)">
         <div class="row">
             <div class="col-lg-6 col-md-6 col-sm-12">
                 <input type="text" name="nombre" class="form_input" id="nombre" placeholder="Nombre" required>  

@@ -53,8 +53,13 @@
                 mysqli_stmt_bind_param($stmt, "sssdi", $titulo_a_actualizar, $categoria_a_actualizar, $descripcion_a_actualizar, $precio_a_actualizar, $id_producto_actualizar);
 
                 if(mysqli_stmt_execute($stmt)){
-                    
-                    echo 'Producto actualizado, ID: '.$id_producto_actualizar;
+                    echo '<div class="alert alert-success d-flex align-items-center" role="alert">
+                            <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:"><use xlink:href="#check-circle-fill"/></svg>
+                            <div>
+                                Producto actualizado, ID: '.$id_producto_actualizar.'
+                            </div>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>';
                 }else{
                     echo mysqli_stmt_error($stmt);
                 }

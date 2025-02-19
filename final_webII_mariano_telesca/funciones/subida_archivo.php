@@ -19,7 +19,6 @@
                 echo "Error al subir el archivo.";
             }
         } else {
-
             echo "Error: Tipo de archivo no permitido.";
         };
     } else {

@@ -2,14 +2,14 @@
     //Cargo la conexión a la Base de Datos desde un archivo externo
     require_once 'basededatos/conexion.php';
 
-    $id_producto_borrar = "";
+    $id_curso_borrar = "";
 
-    if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['eliminar_producto'])){
+    if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['eliminar_curso'])){
 
-        $id_producto_borrar = $_POST["id_producto_borrar"];
+        $id_curso_borrar = $_POST["id_curso_borrar"];
 
-        //Realizamos la Query para eliminar los productos de la tabla correspondiente
-        $sql = "DELETE FROM productos WHERE id = ?";
+        //Realizamos la Query para eliminar el usuario de la tabla
+        $sql = "DELETE FROM cursos WHERE id = ?";
 
         $stmt = mysqli_prepare($conn, $sql);
 
@@ -17,13 +17,13 @@
         if($stmt == false){
             echo mysqli_error($conn);
         }else{
-            mysqli_stmt_bind_param($stmt, "i", $_POST['id_producto_borrar']);
+            mysqli_stmt_bind_param($stmt, "i", $_POST['id_curso_borrar']);
 
             if(mysqli_stmt_execute($stmt)){
                 echo '<div class="alert alert-success d-flex align-items-center" role="alert">
                             <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:"><use xlink:href="#check-circle-fill"/></svg>
                             <div>
-                                Producto eliminado, ID: '.$id_producto_borrar.'
+                                Curso eliminado, ID: '.$id_curso_borrar.'
                             </div>
                             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                         </div>';

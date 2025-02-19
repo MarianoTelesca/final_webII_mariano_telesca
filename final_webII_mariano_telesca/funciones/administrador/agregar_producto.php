@@ -55,7 +55,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['agregar_producto'])){
 
             if(mysqli_stmt_execute($stmt)){
                 $id = mysqli_insert_id($conn);
-                echo 'ID del producto agregado: '.$id;
+                echo '<div class="alert alert-success d-flex align-items-center" role="alert">
+                        <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:"><use xlink:href="#check-circle-fill"/></svg>
+                        <div>
+                            Producto agregado, ID: '.$id.'
+                        </div>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>';
             }else{
                 echo mysqli_stmt_error($stmt);
             }

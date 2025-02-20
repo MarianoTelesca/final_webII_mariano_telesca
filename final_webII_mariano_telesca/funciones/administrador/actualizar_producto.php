@@ -17,8 +17,8 @@
         $categoria_a_actualizar = $_POST["categoria_a_actualizar"];
         $precio_a_actualizar = $_POST["precio_a_actualizar"];
 
-        if($_POST["id_producto_actualizar"] == ""){
-            $errores_actualizar[] = "El ID debe completarse con el ID del producto que desea actualizar";
+        if($_POST["id_producto_actualizar"] == "" || $_POST["id_producto_actualizar"] <= 0){
+            $errores_actualizar[] = "El ID debe completarse con el ID del producto que desea actualizar, que debe ser mínimo 1.";
         }
 
         if($_POST["titulo_a_actualizar"] == ""){

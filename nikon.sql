@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 27-01-2025 a las 00:31:47
+-- Tiempo de generación: 20-02-2025 a las 19:54:39
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -20,6 +20,29 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `nikon`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `consultas`
+--
+
+CREATE TABLE `consultas` (
+  `id` int(11) NOT NULL,
+  `nombre` varchar(20) NOT NULL,
+  `apellido` varchar(15) NOT NULL,
+  `mail` varchar(50) NOT NULL,
+  `tema` varchar(20) NOT NULL,
+  `consulta` varchar(300) NOT NULL,
+  `resuelta` tinyint(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `consultas`
+--
+
+INSERT INTO `consultas` (`id`, `nombre`, `apellido`, `mail`, `tema`, `consulta`, `resuelta`) VALUES
+(1, 'Mariano', 'Telesca', 'Mariano@gmail.com', 'generales', 'La consulta', 0);
 
 -- --------------------------------------------------------
 
@@ -41,7 +64,8 @@ CREATE TABLE `cursos` (
 INSERT INTO `cursos` (`id`, `titulo`, `descripcion`, `boton`) VALUES
 (1, 'Cursos', 'Nikon School introduce al usuario en el manejo de la fotografía réflex digital, sea cual sea su nivel de experiencia. En los cursos ofrecidos, los entusiastas de la fotografía recibirán un práctico en', 'Consultar'),
 (2, 'Excursiones', 'Nuestro objetivo es complementar el esquema tradicional de clases en aula, con salidas fotográficas donde aplicar los conocimientos adquiridos. Los phototrips son una experiencia mucho más completa qu', 'Ver del tema'),
-(3, 'Talleres', 'Jornadas para la profundización de conocimientos a través de la práctica. Desde Retoque e Iluminación hasta ejercicios prácticos. Pensado para todos los niveles y abarcando aquellos aspectos importantes que rodean el mundo de la fotografía.', 'Consultar');
+(3, 'Talleres', 'Jornadas para la profundización de conocimientos a través de la práctica. Desde Retoque e Iluminación hasta ejercicios prácticos. Pensado para todos los niveles y abarcando aquellos aspectos importantes que rodean el mundo de la fotografía.', 'Consultar'),
+(4, 'Talleres infantiles', 'Una nueva forma de intentar encontrar el futuro hobby para los niños. Un taller para niños sobre fotografía, desde un enfoque divertido y motivante.', 'Vamos!');
 
 -- --------------------------------------------------------
 
@@ -52,6 +76,7 @@ INSERT INTO `cursos` (`id`, `titulo`, `descripcion`, `boton`) VALUES
 CREATE TABLE `productos` (
   `id` int(11) NOT NULL,
   `titulo` varchar(100) NOT NULL,
+  `categoria` varchar(20) NOT NULL,
   `descripcion` varchar(250) NOT NULL,
   `precio` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -60,13 +85,22 @@ CREATE TABLE `productos` (
 -- Volcado de datos para la tabla `productos`
 --
 
-INSERT INTO `productos` (`id`, `titulo`, `descripcion`, `precio`) VALUES
-(1, 'Cámaras Mirrorless', 'Las cámaras Mirrorless (también conocidas como cámaras compactas de sistema) no contienen un espejo ni un visor óptico, por lo que suelen ser más pequeñas que las réflex digitales.', 0),
-(2, 'Cámaras Reflex', 'Es una cámara fotográfica digital también conocida como DSLR (Digital Single Lens Reflex), que permite al fotógrafo visualizar de manera directa la imagen que desea capturar a través de un visor óptico sin cambiar el ángulo del objeto.', 0),
-(3, 'Lentes Mirrorless', 'Estas lentes son el complemento ideal para su cámara Mirrorless Nikon.', 0),
-(4, 'Flashes', 'El flash fotográfico o destellador es un dispositivo que actúa como fuente de luz artificial intensa y dura, que generalmente abarca poco espacio y es transportable.', 0),
-(5, 'Binoculares', 'Los prismáticos, o binoculares, son un instrumento óptico usado para ampliar la imagen de los objetos distantes, al igual que el monocular y el telescopio, resultando más cómodo apreciar la distancia entre objetos distantes y seguirlos en movimiento.', 0),
-(6, 'Telescopios', 'Un telescopio es una herramienta que los astrónomos usan para ver objetos lejanos. La mayor de los telescopios, al igual que todos los telescopios grandes, funcionan utilizando espejos curvos para captar y enfocar la luz del cielo nocturno.', 0)
+INSERT INTO `productos` (`id`, `titulo`, `categoria`, `descripcion`, `precio`) VALUES
+(1, 'ZZ 6 II', 'Cámara Mirrorless', 'Formato FX. 24.5 Megapíxeles. 14 CPS Disparos Continuos. Video 4k Ultra HD.', 1798000),
+(2, 'ZZ 8', 'Cámara Mirrorless', 'Cámara híbrida única. 45.7 Megapíxeles. Pantalla LCD táctil de 3.2\'\'. Video 8K Ultra HD. ISO 64-25600.', 4500000),
+(3, 'ZZ 7', 'Cámara Mirrorless', 'Cámara con formato FX. 45.7 Megapíxeles. Gran definición en los detalles. Video 4K Ultra HD.', 2350000),
+(4, '1 SB-N7', 'Flash', 'El flash fotográfico o destellador es un dispositivo que actúa como fuente de luz artificial intensa y dura, abarca poco espacio y es transportable.', 270000),
+(5, 'Aculon T01', 'Binoculares', 'Los binoculares, son un instrumento óptico usado para ampliar la imagen de los objetos distantes resultando más cómodo apreciar la distancia entre objetos distantes y seguirlos en movimiento.', 58000),
+(6, 'D780', 'Cámara Réflex', 'Cámara Réflex Digitales. \r\nFormato FX. \r\nPantalla LCD.', 2785000),
+(27, 'ZZ 30', 'Cámara Mirrorles', 'Formato DX, 20,9 megapíxeles, pantalla LCD táctil 3,0 y video 4K UltraHD', 769000),
+(28, 'ZZ 50', 'Cámara Mirrorles', 'Pequeña y audaz. Formato DX, 20,9 megapíxeles. Disparo continuo y de 100 a 51200 ISO. Video 4K UltraHD', 865000),
+(29, 'P1000', 'Cámara Compacta', '16 Megapíxeles. Lente de cristal 125X con zoom. Pantalla LCD 3.2\" y 4K UltraHD.', 1273000),
+(30, 'P1100', 'Cámara Compacta', '16 Megapíxeles. Lente de cristal 200X con zoom. Pantalla LCD 3.2\" y 4K UltraHD.', 1465000),
+(31, 'P950', 'Cámara Compacta', '16 Megapíxeles. Lente de cristal 83X con zoom. Pantalla LCD 3.2\" y 4K UltraHD.', 968000),
+(32, 'Aculon 211 7x35', 'Binoculares', 'Enfoque central. 7 veces de aumento y 35mm de diámetro', 94000),
+(33, 'Aculon 211 10x42', 'Binoculares', 'Enfoque central. 10 veces de aumento y 42mm de diámetro', 103000),
+(34, 'Telescopio de campo 13-30x50 mm ED', 'Telescopios', 'El cristal ED de Nikon ofrece la máxima nitidez de borde a borde, resolución de detalles e imágenes claras y en colores reales sin destellos.', 986000),
+(35, 'ProStaff 4x32 Matte Nikoplex', 'Telescopios', 'Sistema óptico multicapa: las lentes multicapa aumentan la transmisión de la luz hasta en un 90%, sin precedentes en ámbitos similares.', 108000);
 
 -- --------------------------------------------------------
 
@@ -86,12 +120,24 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`id`, `tipo_admin`, `user`, `pass`) VALUES
-(1, 1, 'admin', '1234'),
-(2, 0, 'user', '1234');
+(1, 1, 'admin', '$2y$10$noYUrgwCPsMFq95RRuGf7.GC.U/At0BCNCKKnEjNfK1HLkNdKPQaa'),
+(2, 0, 'user', '$2y$10$BHvBgkOyqMk4d4YNsPu3SOiUEe63px75XvDn5aqNVw.HizMeq5RU.');
 
 --
 -- Índices para tablas volcadas
 --
+
+--
+-- Indices de la tabla `consultas`
+--
+ALTER TABLE `consultas`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `cursos`
+--
+ALTER TABLE `cursos`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indices de la tabla `productos`
@@ -110,16 +156,28 @@ ALTER TABLE `usuarios`
 --
 
 --
+-- AUTO_INCREMENT de la tabla `consultas`
+--
+ALTER TABLE `consultas`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT de la tabla `cursos`
+--
+ALTER TABLE `cursos`
+  MODIFY `id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
 -- AUTO_INCREMENT de la tabla `productos`
 --
 ALTER TABLE `productos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

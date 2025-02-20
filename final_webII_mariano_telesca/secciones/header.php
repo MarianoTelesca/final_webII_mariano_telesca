@@ -6,11 +6,10 @@
     }
 
     // Acá se define el array con las secciones, según el tipo de usuario
-    $seccionesSinLoguear = ["Inicio" => "index.php", "Tienda" => "tienda.php", "Contacto" => "contacto.php", "Registrarse" => "registro.php", "Log In" => "login.php"];
     $seccionesAdmin = ["Inicio" => "index.php", "Tienda" => "tienda.php", "Admin" => "administrador.php"];
-    $seccionesUsuario = ["Inicio" => "index.php", "Tienda" => "tienda.php", "Contacto" => "contacto.php"];
+    $secciones = ["Inicio" => "index.php", "Tienda" => "tienda.php", "Contacto" => "contacto.php"];
 
-    // Incluyo una función creada aparte donde solo pasó que array usará para crear el menú según quien inicio sesión
+    // Incluyo una función creada aparte donde solo pasó que array usará para crear el menú según  quien inicio sesión
     include_once('./funciones/header_secciones.php');
 
     include_once('./funciones/cerrar_sesion.php');
@@ -34,18 +33,34 @@
                             }
 
                             if(isset($_SESSION['tipo_admin']) && $_SESSION['tipo_admin'] == 0){
-                                header_secciones($seccionesUsuario);
+                                header_secciones($secciones);
                             }
 
-                            echo '<li class="nav-item"><form method="POST">
-                                    <button type="submit" name="cerrar_sesion">Cerrar sesión</button>
+                            echo '<li class="nav-item ms-auto"><form method="POST">
+                                    <button type="submit" name="cerrar_sesion" class="btn btn-outline-light">Cerrar sesión</button>
                                 </form></li>';
 
                         }else{
-                            header_secciones($seccionesSinLoguear);
+                            header_secciones($secciones);
                         }
                     ?>
-                </ul>                
+                </ul> 
+                
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <?php
+                        // Si el usuario no está logueado, ponemos los botones de login y registrar del lado derecho
+                        if (!isset($_SESSION['sesion']) || $_SESSION['sesion'] != true) {
+                            echo '
+                            <li class="nav-item">
+                                <a class="nav-link" href="login.php">Log In</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="registro.php">Registrarse</a>
+                            </li>';
+                        }
+                    ?>
+                </ul>
+                
             </div>
         </div>
     </nav>

@@ -11,8 +11,8 @@
         $id_usuario_actualizar = $_POST["id_usuario_actualizar"];
         $tipo_admin_a_actualizar = $_POST["tipo_admin_a_actualizar"];
 
-        if($_POST["id_usuario_actualizar"] == ""){
-            $errores_actualizar_usuario[] = "El ID debe completarse con el ID del usuario que desea actualizar";
+        if($_POST["id_usuario_actualizar"] == "" || $_POST['id_usuario_actualizar'] <= 1){
+            $errores_actualizar_usuario[] = "El ID debe completarse con el ID del usuario que desea actualizar, que debe ser mayor a 2 ya que el usuario admin original no puede modificarse";
         }
     
         if($_POST["tipo_admin_a_actualizar"] != 0 && $_POST["tipo_admin_a_actualizar"] != 1){

@@ -48,7 +48,7 @@
                         $fila = mysqli_fetch_array($result);
                         
                         echo '<div class="card col-lg-4 col-md-6 col-12">';
-                        echo '<img src="imagenes/indexcurso'.$actual.'.png" class="card-img-top img-fluid imgcardtamanio" alt="Ejemplo de la fotografía enseñada" width="295" height="201">';
+                        echo '<img src="imagenes/curso'.$actual.'.png" class="card-img-top img-fluid imgcardtamanio" alt="Ejemplo de la fotografía enseñada" width="295" height="201">';
                         echo '<div class="card-body">
                             <h2 class="card-title">'.$fila['titulo'].'</h2>
                             <p class="card-text">'.$fila['descripcion'].'...</p>
@@ -60,12 +60,12 @@
                 }
             ?>
 
-            <!-- *** FRANJA SEPARADORA *** -->
+            <!-- FRANJA SEPARADORA -->
             <div class="row franjacolor franjaalto2">
                 <div class="col"> <p></p> </div>
             </div>
             
-            <!-- *** IMAGENES GENERALES DE PRODUCTOS *** -->
+            <!-- IMAGENES GENERALES DE PRODUCTOS -->
             <div class="row">
                 <div class="col-md-6 col-sm-12">
                     <div>
@@ -77,20 +77,18 @@
                 </div>
             </div>
 
-            <div class="franjacolor franjaalto1 textofranja titulo">
-                <div class="col">
-                    <h1>Quienes somos?</h1>
-                </div>
+            <div class="row franjacolor franjaalto2">
+                <div class="col"> <p></p> </div>
             </div>
-            </br>
             
             <!-- FOTO Y DESCRIPCION DEL QUIENES SOMOS -->
             <div class="row textofranja">
                 <h2>Nikon: Pasado - Presente - Futuro de la fotografía</h2>
             </div>
+
             <section class="borde row">
                 <div class="col-md-6 col-sm-12">
-                <img src="imagenes/quienessomos1.png" alt="Mapa de la ciudad resaltado" class="img-fluid imagenesgaleria" id="mapa" width="882" height="582">
+                <img src="imagenes/ubicacion.png" alt="Mapa de la ciudad resaltado" class="img-fluid imagenesgaleria" id="mapa" width="882" height="582">
                 </div>
                 <article class="col-md-6 col-sm-12">   
                     <p>Nikon es una marca creada en Japón hace más de 100 años.</p>
@@ -100,15 +98,11 @@
                     <p>Por qué Nikon?: En septiembre de 1946, el diseño de la cámara estaba terminado y fue denominado NIKON. Esta marca deriva de NIppon KOgaku, a la que Joe Ehrenreich añadió una N para ofrecer la sensación de grande, consistente. </p>
                 </article>
             </section>
-
-            <!-- SECTOR DE SUSCRIPCIÓN -->
+            
             <div class="row franjacolor franjaalto2">
-                <div class="col-12 textofranja">
-                    <a href="contacto.php">Suscribite a nuestro Newsletter</a>
-                </div>
+                <div class="col"> <p></p> </div>
             </div>
         </main>
-
     </div>
 
     <?php

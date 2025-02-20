@@ -52,9 +52,13 @@
                 }
                 echo '</table></div>';
 
-                for($i = 1; $i <= $total_paginas; $i++){
-                    echo "<a href='?pagina=$i'>$i</a> -";
-                }
+                echo "<nav aria-label='Page navigation example'>
+                        <ul class='pagination'>";
+                        for($i = 1; $i <= $total_paginas; $i++){
+                            echo "<li class='page-item'><a class='page-link' href='?pagina=$i'>$i</a></li>";
+                        }
+                echo    '</ul>
+                    </nav>';
             }
         ?>
     </div>

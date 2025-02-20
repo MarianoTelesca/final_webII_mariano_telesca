@@ -15,8 +15,8 @@
         $descripcion_a_actualizar = $_POST["descripcion_a_actualizar"];
         $boton_a_actualizar = $_POST["boton_a_actualizar"];
 
-        if($_POST["id_curso_actualizar"] == ""){
-            $errores_actualizar[] = "El ID debe completarse con el ID del curso que desea actualizar";
+        if($_POST["id_curso_actualizar"] == "" || $_POST["id_curso_actualizar"] <= 0){
+            $errores_actualizar[] = "El ID debe completarse con el ID del curso que desea actualizar, que debe ser mínimo 1.";
         }
 
         if($_POST["titulo_a_actualizar"] == ""){

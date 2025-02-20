@@ -9,14 +9,14 @@
     $consulta = "";
 
     // Traigo el archivo externo que contiene la función para filtrar los datos ingresados desde el formulario 
-    require_once('funciones/saneos/saneodatos.php');
+    require_once('funciones/saneos/saneo_datos.php');
 
     // Se verifica que el metodo de reenvio del formulario sea POST
     if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['consulta'])) {
         // Se pasa la funcion de filtrado a cada dato ingresado y se los asigna a una variable
         $nombre_consulta = saneo_dato_ingresado($_POST["nombre_consulta"]);
         $apellido_consulta = saneo_dato_ingresado($_POST["apellido_consulta"]);
-        include('funciones/saneos/saneoemail.php');
+        include('funciones/saneos/saneo_email.php');
         $tema_consulta = $_POST["tema_consulta"];
         $consulta = saneo_dato_ingresado($_POST["consulta"]);        
         

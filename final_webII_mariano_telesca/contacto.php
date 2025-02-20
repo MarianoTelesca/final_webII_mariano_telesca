@@ -52,6 +52,16 @@
         </div>
         <div class="row">
             <div class="col-12">
+              <select name="tema_consulta" class="form_input" id="tema_consulta">
+                <option class="form_opcion" value="generales">Consultas generales</option>
+                <option class="form_opcion" value="suscripcion">Suscripción</option>
+                <option class="form_opcion" value="excursiones">Excursiones</option>
+                <option class="form_opcion" value="talleres">Talleres</option>
+              </select>
+            </div>
+          </div>
+        <div class="row">
+            <div class="col-12">
               <textarea name="consulta" placeholder="Escriba su consulta aquí" id="consulta" required></textarea>
             </div>
         </div>

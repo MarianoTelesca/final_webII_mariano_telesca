@@ -30,7 +30,7 @@
                 echo '<table class="table table-striped table-bordered"> <tr> <th>ID</th><th>Título</th><th>Categoría</th><th>Descripción</th><th>Precio</th><th>Acción</th> </tr>';
                 echo    '<tr>
                             <form method="post">
-                                <td> <input name="id_producto_actualizar" type="number" id="id_producto_actualizar" placeholder="ID del producto"> </td>
+                                <td> <input name="id_producto_actualizar" type="number" size="1" id="id_producto_actualizar" placeholder="ID del producto"> </td>
                                 <td> <input name="titulo_a_actualizar" type="text" id="titulo_a_actualizar" placeholder="Nuevo título"> </td>
                                 <td> <input name="categoria_a_actualizar" type="text" id="categoria_a_actualizar" placeholder="Nueva categoría"> </td>
                                 <td> <input name="descripcion_a_actualizar" id="descripcion_a_actualizar" placeholder="Nueva descripción"> </td>

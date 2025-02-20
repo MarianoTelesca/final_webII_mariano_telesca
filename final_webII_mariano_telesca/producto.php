@@ -66,47 +66,6 @@
                 </div>
             </div>
 
-            <!-- *** FRANJA SEPARADORA *** -->
-            <div class="row franjacolor franjaalto2">
-                <div class="col">
-                    <p class="text-center py-4"> </p>
-                </div>
-            </div>
-
-            <!-- *** RECOMENDACIONES *** -->
-            <div class="row mb-4">
-                <div class="col textofranja text-center">
-                    <h2>Recomendaciones en base a tus búsquedas:</h2>
-                </div>
-            </div>
-
-            <div class="row">
-                <?php
-                    //Cargo la conexión a la Base de Datos desde un archivo externo
-                    require_once 'basededatos/conexion.php';
-
-                    //Realizamos la Query de los productos y guardamos los resultados
-                    $sql = "SELECT * FROM productos";
-                    $result = mysqli_query($conn, $sql);
-
-                    //Si los resultados dan más de una fila, entonces entra en un FOR donde los recorre
-                    $nfilas = mysqli_num_rows($result);
-                    if ($nfilas > 0) {
-                        for ($i = 0; $i < $nfilas; $i++) {
-                            //Recorre los resultados de la Query y muestra uno por uno los resultados en el formato pedido (Cards)
-                            $actual = $i + 1;
-                            $fila = mysqli_fetch_array($result);
-
-                            echo '<div class="card col-6 col-md-4 col-lg-3 mb-4">';
-                            echo '<img src="imagenes/tienda' . $actual . '.png" class="card-img-top img-fluid rounded" alt="Imagen del producto">';
-                            echo '<div class="card-body">';
-                            echo '<h5 class="card-title text-center">Producto ' . $actual . '</h5>';
-                            echo '</div>';
-                            echo '</div>';
-                        }
-                    }
-                ?>
-            </div>
         </main>
 
         <?php

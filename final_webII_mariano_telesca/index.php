@@ -13,9 +13,9 @@
 
     <div class="container">
 
-        <!-- *** HEADER CON NAVBAR Y IMAGEN PRINCIPAL *** -->
+        <!-- HEADER CON NAVBAR Y IMAGEN PRINCIPAL -->
         <div class="container">
-            <!-- *** IMAGEN DEL HEADER *** -->
+            <!-- IMAGEN DEL HEADER -->
             <div class="row">
             <div class="col-12">
                 <img src="imagenes/indexheader.jpg" alt="Cámara de fotos en una ruta" class="img-fluid" width="1323" height="631">
@@ -24,17 +24,17 @@
         </div>
 
         <main class="container">
-            <!-- *** FRANJA SEPARADORA CON TITULO *** -->
+            <!-- FRANJA SEPARADORA CON TITULO -->
             <div class="row franjacolor franjaalto1 textofranja titulo">
                 <div class="col"> <h1>Nikon: El futuro de la fotografía</h1> </div>
             </div>
 
-            <!-- *** CARDS DE CURSOS Y WORKSHOPS *** -->
+            <!-- CARDS DE CURSOS -->
             <?php
                 //Cargo la conexión a la Base de Datos desde un archivo externo
                 require_once 'basededatos/conexion.php';
 
-                //Realizamos la Query de los productos y guardamos los resultados
+                //Realizamos la Query de los cursos y guardamos los resultados
                 $sql = "SELECT * FROM cursos";
                 $result = mysqli_query($conn, $sql);
 
@@ -83,7 +83,8 @@
                 </div>
             </div>
             </br>
-            <!-- *** FOTOS Y DESCRIPCION ***-->
+            
+            <!-- FOTO Y DESCRIPCION DEL QUIENES SOMOS -->
             <div class="row textofranja">
                 <h2>Nikon: Pasado - Presente - Futuro de la fotografía</h2>
             </div>
@@ -100,7 +101,7 @@
                 </article>
             </section>
 
-            <!-- *** SECTOR DE SUSCRIPCIÓN *** -->
+            <!-- SECTOR DE SUSCRIPCIÓN -->
             <div class="row franjacolor franjaalto2">
                 <div class="col-12 textofranja">
                     <a href="contacto.php">Suscribite a nuestro Newsletter</a>

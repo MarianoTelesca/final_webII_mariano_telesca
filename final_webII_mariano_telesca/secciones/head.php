@@ -1,3 +1,4 @@
+<!-- Todo lo relacionado al head va en este archivo para importarlo directamente de todos las páginas necesarias -->
 <!DOCTYPE html>
 <html lang="es">
 

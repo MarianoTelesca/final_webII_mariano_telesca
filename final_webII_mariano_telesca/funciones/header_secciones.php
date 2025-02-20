@@ -1,5 +1,6 @@
 <?php
 
+    //Esta función es para poder cambiar el menú superior según el tipo de usuario que inició sesión
     function header_secciones($secciones){
         foreach($secciones as $seccion => $archivo){
         echo '

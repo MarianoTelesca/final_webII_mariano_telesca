@@ -1,4 +1,6 @@
 <?php
+
+    // Si no hay un session start en el archivo desde donde se llama a este, entonces se crea uno. Si ya hay un session_start, se sigue
     if (session_status() == PHP_SESSION_NONE) {
         session_start();
     }
@@ -14,7 +16,7 @@
     include_once('./funciones/cerrar_sesion.php');
 ?>
 
-<!-- *** Acá se carga el header que será contenido en varias secciones *** -->
+<!-- Acá se carga el header que será contenido en varias secciones -->
 <header class="container">
     <nav class="navbar bg-primary navbar-expand-lg bg-body-tertiary border-bottom border-bottom-dark" data-bs-theme="dark">
         <div class="container">

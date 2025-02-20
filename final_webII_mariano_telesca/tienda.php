@@ -15,6 +15,7 @@
         </div>
 
         <?php
+            //Se llama a la base de datos, si hay filas en la respuesta, con un FOR se muestran todos los productos
             require_once 'basededatos/conexion.php';
             $sql = "SELECT * FROM productos";
             $result = mysqli_query($conn, $sql);

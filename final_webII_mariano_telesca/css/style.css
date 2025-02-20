@@ -47,10 +47,11 @@ p, h1, h2, h3 {
   font-style: italic; 
 }
 
-#consulta, #tema_consulta {
-  resize: none; 
+#consulta, #tema_consulta, #email_consulta {
+  resize: none;
   width: 85%;
 }
+
 .form_boton {
   border-radius: 10px;
   padding: 0.3rem 1rem;

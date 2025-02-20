@@ -1,22 +1,17 @@
 <?php
 
-if(isset($_POST['email']) && $_POST['email'] !=""){
+// Esta función es para validar especificamente el mail ingresado
+if(isset($_POST['email_consulta']) && $_POST['email_consulta'] !=""){
     $email_valido = false;
-    $email = filter_var($_POST['email'], FILTER_VALIDATE_EMAIL);
+    $email_consulta = trim($_POST['email_consulta']);
 
-    if(filter_var($email, FILTER_VALIDATE_EMAIL)){
-        $msjemail = "E-mail: ".$email;
+    if(filter_var($email_consulta, FILTER_VALIDATE_EMAIL)){
         $email_valido = true;
     }else{
-        //$msjemail = "DEBE INGRESAR UN EMAIL VALIDO";
         $email_valido = false;
     }
-
 }else{
-    //$msjemail = "DEBE INGRESAR UN EMAIL";
     $email_valido = false;
 }
-
-
 
 ?>

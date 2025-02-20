@@ -3,13 +3,13 @@
         include_once('funciones/administrador/actualizar_usuario.php');
 ?>
 
-<!-- Lista de los productos traido de la BD -->
+<!-- Lista de los usuarios traido de la BD -->
     <div class="container">
         <?php
             //Cargo la conexión a la Base de Datos desde un archivo externo
             require_once './basededatos/conexion.php';
 
-            //Realizamos la Query de los productos y guardamos los resultados
+            //Realizamos la Query de los usuarios y guardamos los resultados
             $sql = "SELECT * FROM usuarios";
             $result = mysqli_query($conn, $sql);
 

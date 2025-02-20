@@ -13,7 +13,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $usuario_login = $_POST["usuario_login"];
     $contrasenia_login = trim($_POST["contrasenia_login"]);
 
-    //Acá, por cada uno de los tres inputs, si uno está vacío, agrega ese error al array de errores
+    //Acá, por cada uno inpus, si uno está vacío, agrega ese error al array de errores
     if ($_POST["usuario_login"] == "") {
         $errores_login[] = "El usuario debe tener información";
     }
@@ -22,7 +22,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $errores_login[] = "La contraseña debe completarse";
     }
 
-    //Si el array está vacío (o sea, no hay errores en los inputs), se continúa con introducir los datos a la DB
+    //Si el array está vacío (o sea, no hay errores en los inputs), se continúa a comparar los datos con la DB
     if (empty($errores_login)) {
 
         //Cargo la conexión a la Base de Datos desde un archivo externo

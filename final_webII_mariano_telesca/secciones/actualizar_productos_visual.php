@@ -21,9 +21,9 @@
             $indice_inicio = ($pagina_actual - 1) * $resultados_por_pagina; //Se calcula la página inicial
             $indice_inicio = max(0, $indice_inicio); //Evitamos que muestre un número negativo  
             $sql = "SELECT * FROM productos LIMIT $indice_inicio, $resultados_por_pagina"; //Query que trae los productos con el límite establecido
-            $result = mysqli_query($conn, $sql); //Ejecuta la query
+            $result = mysqli_query($conn, $sql);
 
-            //Si los resultados dan más de una fila, entonces entra en un FOR donde los recorre
+            //Si los resultados dan más de una fila, entonces creo una tabla y entra en un FOR donde los recorre
             $nfilas = mysqli_num_rows($result);
             if ($nfilas > 0) {
                 echo '<div class="row">';
@@ -40,7 +40,7 @@
                         </tr>';
 
                 for ($i = 1; $i <= $nfilas; $i++){
-                    //Recorre los resultados de la Query y muestra uno por uno los resultados en una lista
+                    //Recorre los resultados de la Query y muestra uno por uno los resultados en una lista + el botón para eliminar una fila individualmente
                     $actual = $i + 1;
                     $fila = mysqli_fetch_array($result);
                     echo '<tr><td>'.$fila['id'].'</td><td>'.$fila['titulo'].'</td><td>'.$fila['categoria'].'<td>'.$fila['descripcion'].'</td><td>$'.$fila['precio'].

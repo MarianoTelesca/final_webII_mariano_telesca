@@ -49,7 +49,7 @@
                                     echo '<tr>
                                             <th>' . $seccion . '</th>
                                             <td>' . $sino . '</td>
-                                          </tr>';
+                                        </tr>';
                                 }
                                 ?>
                             </table>

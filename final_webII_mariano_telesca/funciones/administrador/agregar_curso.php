@@ -1,5 +1,7 @@
 <?php
 
+include_once('funciones/alerta_exitosa.php');
+
 //Se declara un array para los errores del form
 $errors = [];
 
@@ -10,12 +12,12 @@ $texto_boton_nuevo_curso = "";
 
 if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['agregar_curso'])){
 
-    //Asignamos a cada variable el valor ingresaado, para mantener despues si  hay error en otro input
+    //Asignamos a cada variable el valor ingresado, para mantener despues si hay error en otro input
     $titulo_nuevo_curso = $_POST["titulo_nuevo_curso"];
     $descripcion_nuevo_curso = $_POST["descripcion_nuevo_curso"];
     $texto_boton_nuevo_curso = $_POST["texto_boton_nuevo_curso"];
 
-    //Acá, por cada uno de los tres inputs, si uno está vacio, agrega ese error al array de errors
+    //Acá, por cada uno de los input, si uno está vacio, agrega ese error al array de errors
     if($_POST["titulo_nuevo_curso"] == ""){
         $errors[] = "El título debe tener información";
     }
@@ -34,7 +36,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['agregar_curso'])){
         //Cargo la conexión a la Base de Datos desde un archivo externo
         require_once 'basededatos/conexion.php';
 
-
         //Realizamos la Query para insertar los cursos en la tabla correspondiente
         $sql = "INSERT INTO cursos (titulo, descripcion, boton) 
                 VALUES (?,?,?)";
@@ -49,13 +50,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['agregar_curso'])){
 
             if(mysqli_stmt_execute($stmt)){
                 $id = mysqli_insert_id($conn);
-                echo '<div class="alert alert-success d-flex align-items-center alert-dismissible" role="alert">
-                        <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:"><use xlink:href="#check-circle-fill"/></svg>
-                        <div>
-                            Curso agregado, ID: '.$id.'
-                        </div>
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                    </div>';
+                //Traigo la función importada de la alerta exitosa
+                alerta_exitosa("Curso agregado", $id);
             }else{
                 echo mysqli_stmt_error($stmt);
             }

@@ -24,7 +24,6 @@
 
         <div>
             <label for="categoria_nuevo_producto">Categoría del producto</label>
-            <!-- En el 'value' ponemos la variable creada arriba, para que al enviar, se mantenga el valor en caso de haber un error en otros inputs --> 
             <input name="categoria_nuevo_producto" type="text" id="categoria_nuevo_producto" class="form_input" placeholder="Categoría del producto" value="<?=$categoria_nuevo_producto;?>">
         </div>
 

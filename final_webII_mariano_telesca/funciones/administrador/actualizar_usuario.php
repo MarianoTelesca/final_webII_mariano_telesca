@@ -1,4 +1,6 @@
 <?php
+    include_once('funciones/alerta_exitosa.php');
+
     $errores_actualizar_usuario = [];
 
     $id_usuario_actualizar = "";
@@ -35,13 +37,8 @@
                 mysqli_stmt_bind_param($stmt, "ii", $tipo_admin_a_actualizar, $id_usuario_actualizar);
 
                 if(mysqli_stmt_execute($stmt)){
-                    echo '<div class="alert alert-success d-flex align-items-center alert-dismissible" role="alert">
-                            <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:"><use xlink:href="#check-circle-fill"/></svg>
-                            <div>
-                                Usuario actualizado, ID: '.$id_usuario_actualizar.'
-                            </div>
-                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                        </div>';
+                    //Traigo la función importada de la alerta exitosa
+                    alerta_exitosa("Usuario actualizado", $id_usuario_actualizar);
                 }else{
                     echo mysqli_stmt_error($stmt);
                 }

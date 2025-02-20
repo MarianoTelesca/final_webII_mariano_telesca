@@ -1,5 +1,6 @@
 <?php
 
+    // Acá, si se apreta el botón de cerrar sesión, se destruye la session y se redirige al index
     if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['cerrar_sesion'])) {
         session_start();
         session_unset();

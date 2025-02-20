@@ -1,9 +1,9 @@
 <?php
-// Acá se define el array con las secciones
+// Acá se define el array con las secciones que se muestran en el footer (no importa el tipo de usuario)
 $secciones = ["Inicio" => "index.php", "Tienda" => "tienda.php", "Contacto" => "contacto.php"];
 ?>
 
-<!-- *** Acá se carga el footer aue será contenido en varias secciones *** -->
+<!-- Acá se carga el footer que será contenido en varias secciones -->
 
 <footer class="container">
     <div class="container">

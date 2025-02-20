@@ -9,8 +9,8 @@
     // Verificamos si el archivo es el permitido (jog o png)
     if(isset($_FILES)){
         if ($tipoArchivo == "image/jpg" || $tipoArchivo == "image/png") {
-            # Mover el archivo a la ubicación deseada (por ejemplo, la carpeta 'uploads')
-            $directorioDestino = 'adjuntados/';
+            // Movemos el archivo a la ubicación deseada (por ejemplo, la carpeta 'imagenes')
+            $directorioDestino = 'imagenes/';
             $rutaDestino = $directorioDestino.$nombreArchivo;
             
             if (move_uploaded_file($archivo['tmp_name'], $rutaDestino)) {

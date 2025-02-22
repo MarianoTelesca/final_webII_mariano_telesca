@@ -15,7 +15,7 @@
     <?php endif; ?>
 
     <!-- Form para pedirle los datos del curso a agregar -->
-    <form method="post" class="form">
+    <form method="post" class="form" onsubmit="validarFormularioAgregarCursos(event)">
         <div>
             <label for="titulo_nuevo_curso">Título del curso</label>
             <input name="titulo_nuevo_curso" type="text" id="titulo_nuevo_curso" class="form_input" placeholder="Título del curso">
@@ -36,3 +36,29 @@
     </form>
 
 </div>
+
+<script>
+    
+    // En caso de que el campo este vacio (o completado solo con espacios en blanco), no se envía el formulario y envía un alerta al usuario para que complete el campo
+    function validarCampo(campo, nombre_campo, event) {
+    if (campo.trim() === "") {
+    event.preventDefault();
+    alert("Por favor, ingrese " + nombre_campo);
+    return false;
+    }
+    }
+
+    // En esta función, antes de enviar el formulario, validamos los valores ingresados.
+    function validarFormularioAgregarCursos(event) {
+        // Asignamos a consts los elementos del form
+        const titulo = document.getElementById("titulo_nuevo_curso").value;
+        const descripcion = document.getElementById("descripcion_nuevo_curso").value;
+        const texto_boton = document.getElementById("texto_boton_nuevo_curso").value;
+
+        validarCampo(titulo, "el titulo del nuevo curso", event);
+        validarCampo(descripcion, "la descripcion del nuevo curso", event);
+        validarCampo(texto_boton, "el texto del boton del nuevo curso", event);
+
+        return true;
+    }
+</script>

@@ -89,6 +89,15 @@
 
   <script>
     
+          // En caso de que el campo este vacio (o completado solo con espacios en blanco), no se envía el formulario y envía un alerta al usuario para que complete el campo
+    function validarCampo(campo, nombre_campo, event) {
+      if (campo.trim() === "") {
+        event.preventDefault();
+        alert("Por favor, ingrese su " + nombre_campo);
+        return false;
+      }
+    }
+
     // En esta función, antes de enviar el formulario, validamos los valores ingresados.
     function validarFormulario(event) {
 
@@ -99,25 +108,9 @@
       const confirmacion = document.getElementById("confirmacion_consulta").checked;
 
       // En caso de que el nombre este vacio (o completado solo con espacios en blanco), no se envía el formulario y envía un alerta al usuario para que complete el campo
-      if (nombre.trim() === "") {
-        event.preventDefault();
-        alert("Por favor, ingrese su nombre.");
-        return false;
-      }
-
-      // En caso de que el apellido este vacio (o completado solo con espacios en blanco), no se envía el formulario y envía un alerta al usuario para que complete el campo
-      if (apellido.trim() === "") {
-        event.preventDefault();
-        alert("Por favor, ingrese su apellido.");
-        return false;
-      }
-
-      // En caso de que la consulta este vacia (o completada solo con espacios en blanco), no se envía el formulario y envía un alerta al usuario para que complete el campo
-      if (consulta.trim() === "") {
-        event.preventDefault();
-        alert("Por favor, ingrese su consulta.");
-        return false;
-      }
+      validarCampo(nombre, "nombre", event);
+      validarCampo(apellido, "apellido", event);
+      validarCampo(consulta, "consulta", event);
 
       // En caso de que no se haya tildado de opción de aceptar los términos, no se envía el formulario y envía un alerta al usuario para que tilde el campo
       if (!confirmacion) {

@@ -36,10 +36,6 @@
                                 header_secciones($secciones);
                             }
 
-                            echo '<li class="nav-item ms-auto"><form method="POST">
-                                    <button type="submit" name="cerrar_sesion" class="btn btn-outline-light">Cerrar sesión</button>
-                                </form></li>';
-
                         }else{
                             header_secciones($secciones);
                         }
@@ -57,6 +53,10 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="registro.php">Registrarse</a>
                             </li>';
+                        }else{
+                            echo '<li class="nav-item"><form method="POST">
+                                    <button type="submit" name="cerrar_sesion" class="btn btn-outline-light">Cerrar sesión</button>
+                                </form></li>';
                         }
                     ?>
                 </ul>

@@ -1,5 +1,6 @@
 <?php
     include_once('funciones/alerta_exitosa.php');
+    include_once('funciones/alerta_error.php');
 
     $errores_actualizar_usuario = [];
 
@@ -40,18 +41,13 @@
                     //Traigo la función importada de la alerta exitosa
                     alerta_exitosa("Usuario actualizado", $id_usuario_actualizar);
                 }else{
-                    echo mysqli_stmt_error($stmt);
+                    alerta_error(mysqli_stmt_error($stmt));
                 }
 
             }
         }else{
             foreach($errores_actualizar_usuario as $error){
-                echo'
-                    <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                        '.$error.'
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                    </div>
-                ';
+                alerta_error($error);
             }
         }
     }

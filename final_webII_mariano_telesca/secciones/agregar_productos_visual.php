@@ -4,18 +4,8 @@
 ?>
 
 <div>
-
-    <!-- Esto sirve para que si el array $errors tiene contenido, se muestre con un for each cada error que tiene-->
-    <?php if (!empty($errors)): ?>
-        <ul>
-        <?php foreach($errors as $error): ?>
-        <li><?= $error ?></li>
-        <?php endforeach; ?>
-        </ul>
-    <?php endif; ?>
-
     <!-- Form para pedirle los datos del producto a agregar -->
-    <form method="post" class="form">
+    <form method="post" class="form" onsubmit="validarFormularioAgregarProductos(event)">
         <div>
             <label for="titulo_nuevo_producto">Título del producto</label>
             <!-- En el 'value' ponemos la variable creada arriba, para que al enviar, se mantenga el valor en caso de haber un error en otros inputs --> 
@@ -42,3 +32,31 @@
     </form>
 
 </div>
+
+<script>
+    
+    // En caso de que el campo este vacio (o completado solo con espacios en blanco), no se envía el formulario y envía un alerta al usuario para que complete el campo
+    function validarCampo(campo, nombre_campo, event) {
+    if (campo.trim() === "") {
+    event.preventDefault();
+    alert("Por favor, ingrese " + nombre_campo);
+    return false;
+    }
+    }
+
+    // En esta función, antes de enviar el formulario, validamos los valores ingresados.
+    function validarFormularioAgregarProductos(event) {
+        // Asignamos a consts los elementos del form
+        const titulo = document.getElementById("titulo_nuevo_producto").value;
+        const categoria = document.getElementById("categoria_nuevo_producto").value;
+        const descripcion = document.getElementById("descripcion_nuevo_producto").value;
+        const precio = document.getElementById("precio_nuevo_producto").value;
+
+        validarCampo(titulo, "el titulo del nuevo producto", event);
+        validarCampo(categoria, "la categoria del nuevo producto", event);
+        validarCampo(descripcion, "la descripcion del nuevo producto", event);
+        validarCampo(precio, "el precio del nuevo producto", event);
+
+        return true;
+    }
+</script>

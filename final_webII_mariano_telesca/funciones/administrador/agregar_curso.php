@@ -1,9 +1,10 @@
 <?php
 
 include_once('funciones/alerta_exitosa.php');
+include_once('funciones/alerta_error.php');
 
 //Se declara un array para los errores del form
-$errors = [];
+$errores_agregar_curso = [];
 
 //Se declaran variables para cada input que sirven para mantener un valor ingresado si hay errores en otros inputs
 $titulo_nuevo_curso = "";
@@ -17,21 +18,21 @@ if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['agregar_curso'])){
     $descripcion_nuevo_curso = $_POST["descripcion_nuevo_curso"];
     $texto_boton_nuevo_curso = $_POST["texto_boton_nuevo_curso"];
 
-    //Acá, por cada uno de los input, si uno está vacio, agrega ese error al array de errors
+    //Acá, por cada uno de los input, si uno está vacio, agrega ese error al array de errores_agregar_curso
     if($_POST["titulo_nuevo_curso"] == ""){
-        $errors[] = "El título debe tener información";
+        $errores_agregar_curso[] = "El título debe tener información";
     }
 
     if($_POST["texto_boton_nuevo_curso"] == ""){
-        $errors[] = "El curso debe tener un texto en el botón";
+        $errores_agregar_curso[] = "El curso debe tener un texto en el botón";
     }
 
     if($_POST["descripcion_nuevo_curso"] == ""){
-        $errors[] = "La descripción debe tener información";
+        $errores_agregar_curso[] = "La descripción debe tener información";
     }
 
     //Si el array está vacio (osea no hay errores en los inputs), se continua con introducir la data a la DB
-    if(empty($errors)){
+    if(empty($errores_agregar_curso)){
 
         //Cargo la conexión a la Base de Datos desde un archivo externo
         require_once 'basededatos/conexion.php';
@@ -53,9 +54,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['agregar_curso'])){
                 //Traigo la función importada de la alerta exitosa
                 alerta_exitosa("Curso agregado", $id);
             }else{
-                echo mysqli_stmt_error($stmt);
+                alerta_error(mysqli_stmt_error($stmt));
             }
 
+        }
+    }else{
+        foreach($errores_register as $error){
+            alerta_error($error);
         }
     }
 }

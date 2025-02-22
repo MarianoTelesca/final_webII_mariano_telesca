@@ -1,5 +1,7 @@
 <?php
 
+include_once('funciones/alerta_error.php');
+
 //Se declara un array para los errores del form
 $errores_register = [];
 
@@ -28,11 +30,34 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $errores_register[] = "Las contraseñas no coinciden";
     }
 
+    // Acá chequeo que el nombre de usuario no se repita en la base
+    if(empty($errores_register)){
+        require 'basededatos/conexion.php';
+
+        $sql_user = "SELECT * FROM usuarios WHERE user = ?";
+        $stmt_user = mysqli_prepare($conn, $sql_user);
+        
+        if ($stmt_user === false) {
+            die('Error preparando la consulta de verificación: ' . mysqli_error($conn));
+        }else{
+            mysqli_stmt_bind_param($stmt_user, "s", $nombre_nuevo_usuario);
+            mysqli_stmt_execute($stmt_user);
+            mysqli_stmt_store_result($stmt_user);
+
+            // Si el nombre de usuario ya existe, agregamos el error
+            if(mysqli_stmt_num_rows($stmt_user) > 0){
+                $errores_register[] = "El nombre de usuario ya está registrado.";
+            }
+        
+            mysqli_stmt_close($stmt_user);
+        }
+    }
+
     //Si el array está vacio (osea no hay errores en los inputs), se continua con introducir la data a la DB
     if(empty($errores_register)){
 
         //Cargo la conexión a la Base de Datos desde un archivo externo
-        require_once 'basededatos/conexion.php';
+        require 'basededatos/conexion.php';
 
         $contrasenia_hasheada = password_hash($contrasenia_nuevo_usuario, PASSWORD_DEFAULT);
 
@@ -51,9 +76,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             if(mysqli_stmt_execute($stmt)){
                 echo 'Usuario agregado';
             } else {
-                echo 'Error al insertar el usuario: ' . mysqli_stmt_error($stmt);
+                alerta_error("Error al registrar al usuario".mysqli_stmt_error($stmt));
             }
             
+        }
+    }else{
+        foreach($errores_register as $error){
+            alerta_error($error);
         }
     }
 }

@@ -34,7 +34,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['agregar_producto'])){
     }
 
     if($_POST["precio_nuevo_producto"] == "" && $_POST["precio_nuevo_producto"] <= 0){
-        $errores_agregar_producto[] = "El precio debe tener un valor, mayor a 1";
+        $errores_agregar_producto[] = "El precio debe tener un valor, mayor a 0.";
     }
 
     //Si el array está vacio (osea no hay errores en los inputs), se continua con introducir la data a la DB
@@ -57,7 +57,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['agregar_producto'])){
 
             if(mysqli_stmt_execute($stmt)){
                 $id = mysqli_insert_id($conn);
-                //Traigo la función importada de la alerta exitosa
+                include('funciones/subida_imagen.php');
+                subir_imagen("producto", "productos", $id, $conn);
                 alerta_exitosa("Producto agregado", $id);
             }else{
                 echo mysqli_stmt_error($stmt);

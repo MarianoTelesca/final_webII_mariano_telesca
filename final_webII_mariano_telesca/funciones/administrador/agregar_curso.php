@@ -2,6 +2,7 @@
 
 include_once('funciones/alerta_exitosa.php');
 include_once('funciones/alerta_error.php');
+include('funciones/subida_imagenes.php');
 
 //Se declara un array para los errores del form
 $errores_agregar_curso = [];
@@ -51,7 +52,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['agregar_curso'])){
 
             if(mysqli_stmt_execute($stmt)){
                 $id = mysqli_insert_id($conn);
-                include('funciones/subida_archivo_cursos.php');
+                subir_imagen("curso", "cursos", $id, $conn);
                 alerta_exitosa("Curso agregado", $id);
             }else{
                 alerta_error(mysqli_stmt_error($stmt));

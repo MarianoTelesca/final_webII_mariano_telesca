@@ -31,10 +31,8 @@
             <input name="texto_boton_nuevo_curso" type="text" id="texto_boton_nuevo_curso" class="form_input" placeholder="Texto del boton del curso">
         </div>
 
-        <div class="row">
-            <div class="col-12">
-                <p><input type="file" class="form_input" name="archivo_subido">Imagen que se mostrará con el curso (Solo png)</p>
-            </div>
+        <div>
+            <p>Imagen del curso (Solo png)<input type="file" class="form_input" name="archivo_subido"></p>
         </div>
 
         <button type="submit" name="agregar_curso" class="form_boton">Agregar</button>

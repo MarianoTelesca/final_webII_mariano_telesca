@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 20-02-2025 a las 19:54:39
+-- Tiempo de generación: 23-02-2025 a las 20:35:47
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -54,18 +54,19 @@ CREATE TABLE `cursos` (
   `id` int(3) NOT NULL,
   `titulo` varchar(20) NOT NULL,
   `descripcion` varchar(300) NOT NULL,
-  `boton` varchar(20) NOT NULL
+  `boton` varchar(20) NOT NULL,
+  `ruta_imagen` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `cursos`
 --
 
-INSERT INTO `cursos` (`id`, `titulo`, `descripcion`, `boton`) VALUES
-(1, 'Cursos', 'Nikon School introduce al usuario en el manejo de la fotografía réflex digital, sea cual sea su nivel de experiencia. En los cursos ofrecidos, los entusiastas de la fotografía recibirán un práctico en', 'Consultar'),
-(2, 'Excursiones', 'Nuestro objetivo es complementar el esquema tradicional de clases en aula, con salidas fotográficas donde aplicar los conocimientos adquiridos. Los phototrips son una experiencia mucho más completa qu', 'Ver del tema'),
-(3, 'Talleres', 'Jornadas para la profundización de conocimientos a través de la práctica. Desde Retoque e Iluminación hasta ejercicios prácticos. Pensado para todos los niveles y abarcando aquellos aspectos importantes que rodean el mundo de la fotografía.', 'Consultar'),
-(4, 'Talleres infantiles', 'Una nueva forma de intentar encontrar el futuro hobby para los niños. Un taller para niños sobre fotografía, desde un enfoque divertido y motivante.', 'Vamos!');
+INSERT INTO `cursos` (`id`, `titulo`, `descripcion`, `boton`, `ruta_imagen`) VALUES
+(1, 'Cursos', 'Nikon School introduce al usuario en el manejo de la fotografía réflex digital, sea cual sea su nivel de experiencia. En los cursos ofrecidos, los entusiastas de la fotografía recibirán un práctico en', 'Consultar', 'imagenes/curso1.png'),
+(2, 'Excursiones', 'Nuestro objetivo es complementar el esquema tradicional de clases en aula, con salidas fotográficas donde aplicar los conocimientos adquiridos. Los phototrips son una experiencia mucho más completa qu', 'Ver del tema', 'imagenes/curso2.png'),
+(3, 'Talleres', 'Jornadas para la profundización de conocimientos a través de la práctica. Desde Retoque e Iluminación hasta ejercicios prácticos. Pensado para todos los niveles y abarcando aquellos aspectos importantes que rodean el mundo de la fotografía.', 'Consultar', 'imagenes/curso3.png'),
+(4, 'Talleres infantiles', 'Una nueva forma de intentar encontrar el futuro hobby para los niños. Un taller para niños sobre fotografía, desde un enfoque divertido y motivante.', 'Vamos!', 'imagenes/curso4.png');
 
 -- --------------------------------------------------------
 
@@ -78,29 +79,30 @@ CREATE TABLE `productos` (
   `titulo` varchar(100) NOT NULL,
   `categoria` varchar(20) NOT NULL,
   `descripcion` varchar(250) NOT NULL,
-  `precio` int(11) NOT NULL
+  `precio` int(11) NOT NULL,
+  `ruta_imagen` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `productos`
 --
 
-INSERT INTO `productos` (`id`, `titulo`, `categoria`, `descripcion`, `precio`) VALUES
-(1, 'ZZ 6 II', 'Cámara Mirrorless', 'Formato FX. 24.5 Megapíxeles. 14 CPS Disparos Continuos. Video 4k Ultra HD.', 1798000),
-(2, 'ZZ 8', 'Cámara Mirrorless', 'Cámara híbrida única. 45.7 Megapíxeles. Pantalla LCD táctil de 3.2\'\'. Video 8K Ultra HD. ISO 64-25600.', 4500000),
-(3, 'ZZ 7', 'Cámara Mirrorless', 'Cámara con formato FX. 45.7 Megapíxeles. Gran definición en los detalles. Video 4K Ultra HD.', 2350000),
-(4, '1 SB-N7', 'Flash', 'El flash fotográfico o destellador es un dispositivo que actúa como fuente de luz artificial intensa y dura, abarca poco espacio y es transportable.', 270000),
-(5, 'Aculon T01', 'Binoculares', 'Los binoculares, son un instrumento óptico usado para ampliar la imagen de los objetos distantes resultando más cómodo apreciar la distancia entre objetos distantes y seguirlos en movimiento.', 58000),
-(6, 'D780', 'Cámara Réflex', 'Cámara Réflex Digitales. \r\nFormato FX. \r\nPantalla LCD.', 2785000),
-(27, 'ZZ 30', 'Cámara Mirrorles', 'Formato DX, 20,9 megapíxeles, pantalla LCD táctil 3,0 y video 4K UltraHD', 769000),
-(28, 'ZZ 50', 'Cámara Mirrorles', 'Pequeña y audaz. Formato DX, 20,9 megapíxeles. Disparo continuo y de 100 a 51200 ISO. Video 4K UltraHD', 865000),
-(29, 'P1000', 'Cámara Compacta', '16 Megapíxeles. Lente de cristal 125X con zoom. Pantalla LCD 3.2\" y 4K UltraHD.', 1273000),
-(30, 'P1100', 'Cámara Compacta', '16 Megapíxeles. Lente de cristal 200X con zoom. Pantalla LCD 3.2\" y 4K UltraHD.', 1465000),
-(31, 'P950', 'Cámara Compacta', '16 Megapíxeles. Lente de cristal 83X con zoom. Pantalla LCD 3.2\" y 4K UltraHD.', 968000),
-(32, 'Aculon 211 7x35', 'Binoculares', 'Enfoque central. 7 veces de aumento y 35mm de diámetro', 94000),
-(33, 'Aculon 211 10x42', 'Binoculares', 'Enfoque central. 10 veces de aumento y 42mm de diámetro', 103000),
-(34, 'Telescopio de campo 13-30x50 mm ED', 'Telescopios', 'El cristal ED de Nikon ofrece la máxima nitidez de borde a borde, resolución de detalles e imágenes claras y en colores reales sin destellos.', 986000),
-(35, 'ProStaff 4x32 Matte Nikoplex', 'Telescopios', 'Sistema óptico multicapa: las lentes multicapa aumentan la transmisión de la luz hasta en un 90%, sin precedentes en ámbitos similares.', 108000);
+INSERT INTO `productos` (`id`, `titulo`, `categoria`, `descripcion`, `precio`, `ruta_imagen`) VALUES
+(1, 'ZZ 6 II', 'Cámara Mirrorless', 'Formato FX. 24.5 Megapíxeles. 14 CPS Disparos Continuos. Video 4k Ultra HD.', 1698000, 'imagenes/producto1'),
+(2, 'ZZ 8', 'Cámara Mirrorless', 'Cámara híbrida única. 45.7 Megapíxeles. Pantalla LCD táctil de 3.2\'\'. Video 8K Ultra HD. ISO 64-25600.', 4500000, 'imagenes/producto2'),
+(3, 'ZZ 7', 'Cámara Mirrorless', 'Cámara con formato FX. 45.7 Megapíxeles. Gran definición en los detalles. Video 4K Ultra HD.', 2350000, 'imagenes/producto3'),
+(4, '1 SB-N7', 'Flash', 'El flash fotográfico o destellador es un dispositivo que actúa como fuente de luz artificial intensa y dura, abarca poco espacio y es transportable.', 270000, 'imagenes/producto4'),
+(5, 'Aculon T01', 'Binoculares', 'Los binoculares, son un instrumento óptico usado para ampliar la imagen de los objetos distantes resultando más cómodo apreciar la distancia entre objetos distantes y seguirlos en movimiento.', 58000, 'imagenes/producto5'),
+(6, 'D780', 'Cámara Réflex', 'Cámara Réflex Digitales. \r\nFormato FX. \r\nPantalla LCD.', 2785000, 'imagenes/producto6'),
+(27, 'ZZ 30', 'Cámara Mirrorles', 'Formato DX, 20,9 megapíxeles, pantalla LCD táctil 3,0 y video 4K UltraHD', 769000, 'imagenes/producto27'),
+(28, 'ZZ 50', 'Cámara Mirrorles', 'Pequeña y audaz. Formato DX, 20,9 megapíxeles. Disparo continuo y de 100 a 51200 ISO. Video 4K UltraHD', 865000, 'imagenes/producto28'),
+(29, 'P1000', 'Cámara Compacta', '16 Megapíxeles. Lente de cristal 125X con zoom. Pantalla LCD 3.2\" y 4K UltraHD.', 1273000, 'imagenes/producto29'),
+(30, 'P1100', 'Cámara Compacta', '16 Megapíxeles. Lente de cristal 200X con zoom. Pantalla LCD 3.2\" y 4K UltraHD.', 1465000, 'imagenes/producto30'),
+(31, 'P950', 'Cámara Compacta', '16 Megapíxeles. Lente de cristal 83X con zoom. Pantalla LCD 3.2\" y 4K UltraHD.', 968000, 'imagenes/producto31'),
+(32, 'Aculon 211 7x35', 'Binoculares', 'Enfoque central. 7 veces de aumento y 35mm de diámetro', 94000, 'imagenes/producto32'),
+(33, 'Aculon 211 10x42', 'Binoculares', 'Enfoque central. 10 veces de aumento y 42mm de diámetro', 103000, 'imagenes/producto33'),
+(34, 'Telescopio de campo 13-30x50 mm ED', 'Telescopios', 'El cristal ED de Nikon ofrece la máxima nitidez de borde a borde, resolución de detalles e imágenes claras y en colores reales sin destellos.', 986000, 'imagenes/producto34'),
+(35, 'ProStaff 4x32 Matte Nikoplex', 'Telescopios', 'Sistema óptico multicapa: las lentes multicapa aumentan la transmisión de la luz hasta en un 90%, sin precedentes en ámbitos similares.', 108000, 'imagenes/producto35');
 
 -- --------------------------------------------------------
 
@@ -165,13 +167,13 @@ ALTER TABLE `consultas`
 -- AUTO_INCREMENT de la tabla `cursos`
 --
 ALTER TABLE `cursos`
-  MODIFY `id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT de la tabla `productos`
 --
 ALTER TABLE `productos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`

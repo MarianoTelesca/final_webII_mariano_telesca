@@ -51,7 +51,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['agregar_curso'])){
 
             if(mysqli_stmt_execute($stmt)){
                 $id = mysqli_insert_id($conn);
-                //Traigo la función importada de la alerta exitosa
+                include('funciones/subida_archivo_cursos.php');
                 alerta_exitosa("Curso agregado", $id);
             }else{
                 alerta_error(mysqli_stmt_error($stmt));
@@ -59,7 +59,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['agregar_curso'])){
 
         }
     }else{
-        foreach($errores_register as $error){
+        foreach($errores_agregar_curso as $error){
             alerta_error($error);
         }
     }

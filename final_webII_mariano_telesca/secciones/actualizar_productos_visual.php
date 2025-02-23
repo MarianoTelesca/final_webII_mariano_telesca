@@ -29,12 +29,12 @@
                 echo '<div class="row">';
                 echo '<table class="table table-striped table-bordered"> <tr> <th>ID</th><th>Título</th><th>Categoría</th><th>Descripción</th><th>Precio</th><th>Acción</th> </tr>';
                 echo    '<tr>
-                            <form method="post">
+                            <form method="post" onsubmit="validarFormularioActualizarProductos(event)">
                                 <td> <input name="id_producto_actualizar" type="number" size="1" id="id_producto_actualizar" placeholder="ID del producto"> </td>
-                                <td> <input name="titulo_a_actualizar" type="text" id="titulo_a_actualizar" placeholder="Nuevo título"> </td>
-                                <td> <input name="categoria_a_actualizar" type="text" id="categoria_a_actualizar" placeholder="Nueva categoría"> </td>
-                                <td> <input name="descripcion_a_actualizar" id="descripcion_a_actualizar" placeholder="Nueva descripción"> </td>
-                                <td> <input name="precio_a_actualizar" type="number" id="precio_a_actualizar" placeholder="Nuevo precio"> </td>
+                                <td> <input name="titulo_actualizar_producto" type="text" id="titulo_actualizar_producto" placeholder="Nuevo título"> </td>
+                                <td> <input name="categoria_actualizar_producto" type="text" id="categoria_actualizar_producto" placeholder="Nueva categoría"> </td>
+                                <td> <input name="descripcion_actualizar_producto" id="descripcion_actualizar_producto" placeholder="Nueva descripción"> </td>
+                                <td> <input name="precio_actualizar_producto" type="number" id="precio_actualizar_producto" placeholder="Nuevo precio"> </td>
                                 <td> <button type="submit" name="actualizar_producto">Actualizar</button> </td>
                             </form>
                         </tr>';

@@ -48,7 +48,7 @@
                         $fila = mysqli_fetch_array($result);
                         
                         echo '<div class="card col-lg-4 col-md-6 col-12">';
-                        echo '<img src="imagenes/curso'.$actual.'.png" class="card-img-top img-fluid imgcardtamanio" alt="Ejemplo de la fotografía enseñada" width="295" height="201">';
+                        echo '<img src="'.$fila['ruta_imagen'].'" class="card-img-top img-fluid imgcardtamanio" alt="Una foto al azar que representa al curso" width="295" height="201">';
                         echo '<div class="card-body">
                             <h2 class="card-title">'.$fila['titulo'].'</h2>
                             <p class="card-text">'.$fila['descripcion'].'...</p>

@@ -1,8 +1,6 @@
-    <!-- Lista de los productos traido de la BD -->
+    <!-- Lista de las consultas traidas de la BD -->
     <div class="container">
         <?php
-            $resuelta = "";
-
             //Cargo la conexión a la Base de Datos desde un archivo externo
             require_once './basededatos/conexion.php';
 
@@ -19,14 +17,12 @@
                     //Recorre los resultados de la Query y muestra uno por uno los resultados en una lista
                     $actual = $i + 1;
                     $fila = mysqli_fetch_array($result);
-                    
-                    if($fila['resuelta'] == 0){
-                        $resuelta = "No";
-                    }else{
-                        $resuelta = "Si";
-                    }
 
-                    echo '<tr><td>'.$fila['id'].'</td><td>'.$fila['nombre'].'</td><td>'.$fila['apellido'].'<td>'.$fila['mail'].'</td><td>$'.$fila['tema'].'</td><td>'.$fila['consulta'].'</td><td>'.$resuelta.'</td></tr>';
+                    echo '<tr><td>'.$fila['id'].'</td><td>'.$fila['nombre'].'</td><td>'.$fila['apellido'].'<td>'.$fila['mail'].'</td><td>$'.$fila['tema'].'</td><td>'.$fila['consulta'].'</td>';
+                    echo '<td><form method="post">
+                            <input type="checkbox" id="id_consulta_resuelta" name="id_consulta_resuelta" value="'.$fila['resuelta'].'">
+                        </form></td>
+                        </tr>';
                 }
                 echo '</table></div>';
             }

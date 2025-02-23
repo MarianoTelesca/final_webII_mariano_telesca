@@ -32,31 +32,3 @@
     </form>
 
 </div>
-
-<script>
-    
-    // En caso de que el campo este vacio (o completado solo con espacios en blanco), no se envía el formulario y envía un alerta al usuario para que complete el campo
-    function validarCampo(campo, nombre_campo, event) {
-    if (campo.trim() === "") {
-    event.preventDefault();
-    alert("Por favor, ingrese " + nombre_campo);
-    return false;
-    }
-    }
-
-    // En esta función, antes de enviar el formulario, validamos los valores ingresados.
-    function validarFormularioAgregarProductos(event) {
-        // Asignamos a consts los elementos del form
-        const titulo = document.getElementById("titulo_nuevo_producto").value;
-        const categoria = document.getElementById("categoria_nuevo_producto").value;
-        const descripcion = document.getElementById("descripcion_nuevo_producto").value;
-        const precio = document.getElementById("precio_nuevo_producto").value;
-
-        validarCampo(titulo, "el titulo del nuevo producto", event);
-        validarCampo(categoria, "la categoria del nuevo producto", event);
-        validarCampo(descripcion, "la descripcion del nuevo producto", event);
-        validarCampo(precio, "el precio del nuevo producto", event);
-
-        return true;
-    }
-</script>

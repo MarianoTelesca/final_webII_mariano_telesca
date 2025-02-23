@@ -33,8 +33,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['agregar_producto'])){
         $errores_agregar_producto[] = "La descripción debe tener información";
     }
 
-    if($_POST["precio_nuevo_producto"] == ""){
-        $errores_agregar_producto[] = "El precio debe tener un valor";
+    if($_POST["precio_nuevo_producto"] == "" && $_POST["precio_nuevo_producto"] <= 0){
+        $errores_agregar_producto[] = "El precio debe tener un valor, mayor a 1";
     }
 
     //Si el array está vacio (osea no hay errores en los inputs), se continua con introducir la data a la DB

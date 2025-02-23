@@ -5,37 +5,37 @@
     $errores_actualizar = [];
 
     $id_producto_actualizar = "";
-    $titulo_a_actualizar = "";
-    $descripcion_a_actualizar = "";
-    $categoria_a_actualizar = "";
-    $precio_a_actualizar = "";
+    $titulo_actualizar_producto = "";
+    $descripcion_actualizar_producto = "";
+    $categoria_actualizar_producto = "";
+    $precio_actualizar_producto = "";
 
     if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['actualizar_producto'])){
 
         $id_producto_actualizar = $_POST["id_producto_actualizar"];
-        $titulo_a_actualizar = $_POST["titulo_a_actualizar"];
-        $descripcion_a_actualizar = $_POST["descripcion_a_actualizar"];
-        $categoria_a_actualizar = $_POST["categoria_a_actualizar"];
-        $precio_a_actualizar = $_POST["precio_a_actualizar"];
+        $titulo_actualizar_producto = $_POST["titulo_actualizar_producto"];
+        $descripcion_actualizar_producto = $_POST["descripcion_actualizar_producto"];
+        $categoria_actualizar_producto = $_POST["categoria_actualizar_producto"];
+        $precio_actualizar_producto = $_POST["precio_actualizar_producto"];
 
         if($_POST["id_producto_actualizar"] == "" || $_POST["id_producto_actualizar"] <= 0){
             $errores_actualizar[] = "El ID debe completarse con el ID del producto que desea actualizar, que debe ser mínimo 1.";
         }
 
-        if($_POST["titulo_a_actualizar"] == ""){
+        if($_POST["titulo_actualizar_producto"] == ""){
             $errores_actualizar[] = "El título debe tener información";
         }
     
-        if($_POST["categoria_a_actualizar"] == ""){
+        if($_POST["categoria_actualizar_producto"] == ""){
             $errores_actualizar[] = "La categoría debe tener información";
         }
     
-        if($_POST["descripcion_a_actualizar"] == ""){
+        if($_POST["descripcion_actualizar_producto"] == ""){
             $errores_actualizar[] = "La descripción debe tener información";
         }
     
-        if($_POST["precio_a_actualizar"] == ""){
-            $errores_actualizar[] = "El precio debe tener un valor";
+        if($_POST["precio_actualizar_producto"] == "" && $_POST["precio_actualizar_producto"] <= 0){
+            $errores_actualizar[] = "El precio debe tener un valor mayor a 0";
         }
 
 
@@ -53,7 +53,7 @@
             if($stmt == false){
                 echo mysqli_error($conn);
             }else{
-                mysqli_stmt_bind_param($stmt, "sssdi", $titulo_a_actualizar, $categoria_a_actualizar, $descripcion_a_actualizar, $precio_a_actualizar, $id_producto_actualizar);
+                mysqli_stmt_bind_param($stmt, "sssdi", $titulo_actualizar_producto, $categoria_actualizar_producto, $descripcion_actualizar_producto, $precio_actualizar_producto, $id_producto_actualizar);
 
                 if(mysqli_stmt_execute($stmt)){
                     //Traigo la función importada de la alerta exitosa

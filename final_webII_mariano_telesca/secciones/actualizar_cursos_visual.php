@@ -19,11 +19,11 @@
             echo '<div class="row">';
             echo '<table class="table table-striped table-bordered"> <tr> <th>ID</th><th>Título</th><th>Descripción</th><th>Texto botón</th><th>Acción</th></tr>';
             echo    '<tr>
-                            <form method="post">
+                            <form method="post" onsubmit="validarFormularioActualizarCursos(event)">
                                 <td> <input name="id_curso_actualizar" type="number" id="id_curso_actualizar" placeholder="ID del curso"> </td>
-                                <td> <input name="titulo_a_actualizar" type="text" id="titulo_a_actualizar" placeholder="Nuevo título"> </td>
-                                <td> <input name="descripcion_a_actualizar" id="descripcion_a_actualizar" placeholder="Nueva descripción"> </td>
-                                <td> <input name="boton_a_actualizar" type="text" id="boton_a_actualizar" placeholder="Nueva texto al botón"> </td>
+                                <td> <input name="titulo_actualizar_curso" type="text" id="titulo_actualizar_curso" placeholder="Nuevo título"> </td>
+                                <td> <input name="descripcion_actualizar_curso" id="descripcion_actualizar_curso" placeholder="Nueva descripción"> </td>
+                                <td> <input name="boton_actualizar_curso" type="text" id="boton_actualizar_curso" placeholder="Nueva texto al botón"> </td>
                                 <td> <button type="submit" name="actualizar_curso">Actualizar</button> </td>
                             </form>
                         </tr>';

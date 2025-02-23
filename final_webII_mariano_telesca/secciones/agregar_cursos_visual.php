@@ -15,7 +15,7 @@
     <?php endif; ?>
 
     <!-- Form para pedirle los datos del curso a agregar -->
-    <form method="post" class="form" onsubmit="validarFormularioAgregarCursos(event)">
+    <form method="post" class="form" enctype="multipart/form-data" onsubmit="validarFormularioAgregarCursos(event)">
         <div>
             <label for="titulo_nuevo_curso">Título del curso</label>
             <input name="titulo_nuevo_curso" type="text" id="titulo_nuevo_curso" class="form_input" placeholder="Título del curso">
@@ -31,34 +31,14 @@
             <input name="texto_boton_nuevo_curso" type="text" id="texto_boton_nuevo_curso" class="form_input" placeholder="Texto del boton del curso">
         </div>
 
+        <div class="row">
+            <div class="col-12">
+                <p><input type="file" class="form_input" name="archivo_subido">Imagen que se mostrará con el curso (Solo png)</p>
+            </div>
+        </div>
+
         <button type="submit" name="agregar_curso" class="form_boton">Agregar</button>
 
     </form>
 
 </div>
-
-<script>
-    
-    // En caso de que el campo este vacio (o completado solo con espacios en blanco), no se envía el formulario y envía un alerta al usuario para que complete el campo
-    function validarCampo(campo, nombre_campo, event) {
-    if (campo.trim() === "") {
-    event.preventDefault();
-    alert("Por favor, ingrese " + nombre_campo);
-    return false;
-    }
-    }
-
-    // En esta función, antes de enviar el formulario, validamos los valores ingresados.
-    function validarFormularioAgregarCursos(event) {
-        // Asignamos a consts los elementos del form
-        const titulo = document.getElementById("titulo_nuevo_curso").value;
-        const descripcion = document.getElementById("descripcion_nuevo_curso").value;
-        const texto_boton = document.getElementById("texto_boton_nuevo_curso").value;
-
-        validarCampo(titulo, "el titulo del nuevo curso", event);
-        validarCampo(descripcion, "la descripcion del nuevo curso", event);
-        validarCampo(texto_boton, "el texto del boton del nuevo curso", event);
-
-        return true;
-    }
-</script>
